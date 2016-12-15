@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2aedac82a5ae47b995a22267d0209884" Name="Diagram1">
+        <EntityTypeShape EntityType="MyDatabaseModel.UserData" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Cruise" Width="1.5" PointX="5" PointY="3.125" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Destination" Width="1.5" PointX="7.75" PointY="5.75" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Port" Width="1.5" PointX="1.875" PointY="3.875" />
+        <EntityTypeShape EntityType="MyDatabaseModel.Ship" Width="1.5" PointX="1.5" PointY="5.875" />
+        <AssociationConnector Association="MyDatabaseModel.Fk_Cruise_DestinationID" />
+        <AssociationConnector Association="MyDatabaseModel.Fk_Cruise_PortID" />
+        <AssociationConnector Association="MyDatabaseModel.Fk_Cruise_ShipID" />
+        <EntityTypeShape EntityType="MyDatabaseModel.PurchaseHistory" Width="1.5" PointX="7.875" PointY="0.5" />
+        <AssociationConnector Association="MyDatabaseModel.FK_Purchase_CruiseID" />
+        <AssociationConnector Association="MyDatabaseModel.FK_Purchase_UserID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyDatabaseModelStoreContainer" CdmEntityContainer="MyDatabaseEntities">
+    <EntitySetMapping Name="UserDatas">
+      <EntityTypeMapping TypeName="MyDatabaseModel.UserData">
+        <MappingFragment StoreEntitySet="UserData">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cruises">
+      <EntityTypeMapping TypeName="MyDatabaseModel.Cruise">
+        <MappingFragment StoreEntitySet="Cruise">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+          <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+          <ScalarProperty Name="PortID" ColumnName="PortID" />
+          <ScalarProperty Name="CruiseID" ColumnName="CruiseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Destinations">
+      <EntityTypeMapping TypeName="MyDatabaseModel.Destination">
+        <MappingFragment StoreEntitySet="Destination">
+          <ScalarProperty Name="DestinationName" ColumnName="DestinationName" />
+          <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ports">
+      <EntityTypeMapping TypeName="MyDatabaseModel.Port">
+        <MappingFragment StoreEntitySet="Port">
+          <ScalarProperty Name="PortName" ColumnName="PortName" />
+          <ScalarProperty Name="PortID" ColumnName="PortID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ships">
+      <EntityTypeMapping TypeName="MyDatabaseModel.Ship">
+        <MappingFragment StoreEntitySet="Ship">
+          <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+          <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseHistories">
+      <EntityTypeMapping TypeName="MyDatabaseModel.PurchaseHistory">
+        <MappingFragment StoreEntitySet="PurchaseHistory">
+          <ScalarProperty Name="CruiseID" ColumnName="CruiseID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

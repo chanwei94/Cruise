@@ -1,0 +1,34 @@
+﻿@model DDAC.Models.UpdateUser
+
+@{
+    ViewBag.Title = "Personal Information";
+}
+<div style="text-align:center">
+    <h2>Personal Information</h2>
+</div>
+    @Html.ValidationSummary(true,"",new { @class = "text-danger" })
+    @using (Html.BeginForm("UpdateUser", "Activity"))
+    {
+        <table align="center">
+            <tr>
+                <td>@Html.Label("Full Name: ")</td>
+                <td>@Html.EditorFor(a => a.FullName)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(a => a.FullName, "", new { @class = "text-danger" })</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Email: ")</td>
+                <td>@Html.EditorFor(a => a.Email)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td align="center"><input type="submit" value="Save" /></td>
+            </tr>
+        </table>
+    }
+
+<div style="text-align:center">
+    @Html.ActionLink("Back To Home", "HomePage")
+</div>

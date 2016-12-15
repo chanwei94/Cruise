@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DDAC.Models.HistoryView>
+
+@{
+    ViewBag.Title = "History";
+}
+<div style="text-align:center">
+    <h2>Purchase History</h2>
+    </div>
+    <br /><br />
+
+    <div class="container" style="width:100%;margin-top:2%">
+        @if (Model != null)
+        {
+            <table class="table table-striped">
+                <tr>
+                    <th align="center">ID</th>
+                    <th align="center">Destination</th>
+                    <th align="center">Port</th>
+                    <th align="center">Ship</th>
+                    <th align="center">Start Date</th>
+                    <th align="center">End Date</th>
+                    <th align="center">Price</th>
+                    <th></th>
+                </tr>
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                        <tr>
+                            <td align="left">@item.CruiseID</td>
+                            <td align="left">@item.DestinationName</td>
+                            <td align="left">@item.PortName</td>
+                            <td align="left">@item.ShipName</td>
+                            <td align="left">@item.StartDate</td>
+                            <td align="left">@item.EndDate</td>
+                            <td align="left">@item.Price</td>
+                        </tr>
+                    }
+                    <tr></tr>
+                </tbody>
+            </table>
+        }
+    </div>
+    <div style="text-align:center">
+        @Html.ActionLink("Back To Home", "HomePage")
+    </div>

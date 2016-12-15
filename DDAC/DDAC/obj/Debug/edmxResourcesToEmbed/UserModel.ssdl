@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cruise">
+    <Key>
+      <PropertyRef Name="CruiseID" />
+    </Key>
+    <Property Name="CruiseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PortID" Type="int" Nullable="false" />
+    <Property Name="DestinationID" Type="int" Nullable="false" />
+    <Property Name="ShipID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Destination">
+    <Key>
+      <PropertyRef Name="DestinationID" />
+    </Key>
+    <Property Name="DestinationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DestinationName" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Port">
+    <Key>
+      <PropertyRef Name="PortID" />
+    </Key>
+    <Property Name="PortID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PortName" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PurchaseHistory">
+    <Key>
+      <PropertyRef Name="PurchaseID" />
+    </Key>
+    <Property Name="PurchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CruiseID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ship">
+    <Key>
+      <PropertyRef Name="ShipID" />
+    </Key>
+    <Property Name="ShipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShipName" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserData">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="FullName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="Fk_Cruise_DestinationID">
+    <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+    <End Role="Cruise" Type="Self.Cruise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Destination">
+        <PropertyRef Name="DestinationID" />
+      </Principal>
+      <Dependent Role="Cruise">
+        <PropertyRef Name="DestinationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Cruise_PortID">
+    <End Role="Port" Type="Self.Port" Multiplicity="1" />
+    <End Role="Cruise" Type="Self.Cruise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Port">
+        <PropertyRef Name="PortID" />
+      </Principal>
+      <Dependent Role="Cruise">
+        <PropertyRef Name="PortID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Cruise_ShipID">
+    <End Role="Ship" Type="Self.Ship" Multiplicity="1" />
+    <End Role="Cruise" Type="Self.Cruise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ship">
+        <PropertyRef Name="ShipID" />
+      </Principal>
+      <Dependent Role="Cruise">
+        <PropertyRef Name="ShipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_CruseID">
+    <End Role="Cruise" Type="Self.Cruise" Multiplicity="1" />
+    <End Role="PurchaseHistory" Type="Self.PurchaseHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cruise">
+        <PropertyRef Name="CruiseID" />
+      </Principal>
+      <Dependent Role="PurchaseHistory">
+        <PropertyRef Name="CruiseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_UserID">
+    <End Role="UserData" Type="Self.UserData" Multiplicity="1" />
+    <End Role="PurchaseHistory" Type="Self.PurchaseHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserData">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PurchaseHistory">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyDatabaseModelStoreContainer">
+    <EntitySet Name="Cruise" EntityType="Self.Cruise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Destination" EntityType="Self.Destination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Port" EntityType="Self.Port" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PurchaseHistory" EntityType="Self.PurchaseHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ship" EntityType="Self.Ship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserData" EntityType="Self.UserData" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Fk_Cruise_DestinationID" Association="Self.Fk_Cruise_DestinationID">
+      <End Role="Destination" EntitySet="Destination" />
+      <End Role="Cruise" EntitySet="Cruise" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Cruise_PortID" Association="Self.Fk_Cruise_PortID">
+      <End Role="Port" EntitySet="Port" />
+      <End Role="Cruise" EntitySet="Cruise" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Cruise_ShipID" Association="Self.Fk_Cruise_ShipID">
+      <End Role="Ship" EntitySet="Ship" />
+      <End Role="Cruise" EntitySet="Cruise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_CruseID" Association="Self.FK_Purchase_CruseID">
+      <End Role="Cruise" EntitySet="Cruise" />
+      <End Role="PurchaseHistory" EntitySet="PurchaseHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_UserID" Association="Self.FK_Purchase_UserID">
+      <End Role="UserData" EntitySet="UserData" />
+      <End Role="PurchaseHistory" EntitySet="PurchaseHistory" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

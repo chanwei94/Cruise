@@ -1,0 +1,48 @@
+﻿@model DDAC.Models.Purchase
+
+@{
+    ViewBag.Title = "Your Cruise:";
+}
+<div style="text-align:center">
+    <h2>Purchase</h2>
+</div>
+
+    @using (Html.BeginForm("Purchase", "Activity"))
+    {
+        <br /><br />
+        <table align="center">
+            <tr>
+                <td>@Html.Label("Destination:")</td>
+
+                <td><label>@Html.DisplayFor(a => a.DestinationName)</label></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Port:")</td>
+                <td><label>@Html.DisplayFor(a => a.PortName)</label></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Ship:")</td>
+                <td><label>@Html.DisplayFor(a => a.ShipName)</label></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Start Date:")</td>
+                <td><label>@Html.DisplayFor(a => a.StartDate)</label></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("End Date:")</td>
+                <td><label>@Html.DisplayFor(a => a.EndDate)</label></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Price(RM):")</td>
+                <td><label>@Html.DisplayFor(a => a.Price)</label></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td align="center"><input type="submit" value="Confirm" /></td>
+            </tr>
+        </table>
+    }
+    <br /><br />
+<div style="text-align:center">
+    @Html.ActionLink("Back to Home", "HomePage")
+</div>

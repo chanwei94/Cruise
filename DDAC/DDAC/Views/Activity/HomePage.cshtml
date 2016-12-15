@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DDAC.Models.CruiseView>
+
+@{
+    ViewBag.Title = "Home";
+}
+<div style="text-align:center">
+    <h2>Cruise List</h2>
+    </div>
+    <br /><br />
+    <table align="center">
+        <tr>
+            <td></td>
+            <td>@Html.Label("|")</td>
+            <td></td>
+            <td>@Html.ActionLink("Personal Information", "UpdateUser")</td>
+            <td></td>
+            <td>@Html.Label("|")</td>
+            <td></td>
+            <td>@Html.ActionLink("History", "History")</td>
+            <td></td>
+            <td>@Html.Label("|")</td>
+            <td></td>
+        </tr>
+
+    </table>
+    <div class="container" style="width:100%;margin-top:2%">
+        @if (Model != null)
+        {
+            <table class="table table-striped">
+                <tr>
+                    <th align="center">ID</th>
+                    <th align="center">Destination</th>
+                    <th align="center">Port</th>
+                    <th align="center">Ship</th>
+                    <th align="center">Start Date</th>
+                    <th align="center">End Date</th>
+                    <th align="center">Price(RM)</th>
+                    <th></th>
+                </tr>
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                        <tr>
+                            <td align="left">@item.CruiseID</td>
+                            <td align="left">@item.DestinationName</td>
+                            <td align="left">@item.PortName</td>
+                            <td align="left">@item.ShipName</td>
+                            <td align="left">@item.StartDate</td>
+                            <td align="left">@item.EndDate</td>
+                            <td align="left">@item.Price</td>
+                            <td align="center">@Html.ActionLink("Purchase", "Purchase", new { id = item.CruiseID })</td>
+                        </tr>
+                    }
+                    <tr></tr>
+                </tbody>
+            </table>
+        }
+    </div>
+    <div style="text-align:center">
+        @Html.ActionLink("Log Out", "Login", "Home")
+    </div>
